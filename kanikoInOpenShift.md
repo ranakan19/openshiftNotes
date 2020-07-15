@@ -62,7 +62,7 @@ In the previous scenario, the secret created was for dockerhub. When the destina
     "image-registry.openshift-image-registry.svc:5000": {
 		      "auth": "<auth copied in step 4"
 		}
-        ```
+      
 7. Create secret by running 
 ```kubectl create secret generic regcred --from-file=.dockerconfigjson=/home/<username>/.docker/config.json  --type=kubernetes.io/dockerconfigjson```
 8. Update pod.yaml to look like:
@@ -90,7 +90,7 @@ In the previous scenario, the secret created was for dockerhub. When the destina
             items:
               - key: .dockerconfigjson
                 path: config.json
-            ```
+ 
 9. Run ```kubectl apply -f pod.yaml```
 10. Check the pod is running, and can check logs
 11. Once pod status changes to "complete", From the UI, check the imageStream and ImageStream tags are created.
